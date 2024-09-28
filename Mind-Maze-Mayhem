@@ -1,0 +1,1307 @@
+//Arquivo .c não salvar como .cpp
+
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+#include <windows.h>
+
+char board[3][3];
+char currentPlayer;
+int veia, jag;
+
+void initializeBoard() {
+    for( veia = 0; veia < 3; veia++) {
+        for (jag = 0; jag < 3; jag++) {
+            board[veia][jag] = ' ';
+        }
+    }
+    currentPlayer = 'X';
+}
+
+void printBoard() {
+	printf("\n\n   0   1   2\n");
+    printf("0  %c | %c | %c \n", board[0][0], board[0][1], board[0][2]);
+    printf("  ---|---|---\n");
+    printf("1  %c | %c | %c \n", board[1][0], board[1][1], board[1][2]);
+    printf("  ---|---|---\n");
+    printf("2  %c | %c | %c \n", board[2][0], board[2][1], board[2][2]);
+}
+
+int checkWin() {
+    for (veia = 0; veia < 3; veia++) {
+        if (board[veia][0] == currentPlayer && board[veia][1] == currentPlayer && board[veia][2] == currentPlayer) return 1;
+        if (board[0][veia] == currentPlayer && board[1][veia] == currentPlayer && board[2][veia] == currentPlayer) return 1;
+    }
+    if (board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer) return 1;
+    if (board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer) return 1;
+    return 0;
+}
+
+int checkDraw() {
+    for (veia = 0; veia < 3; veia++) {
+        for (jag = 0; jag < 3; jag++) {
+            if (board[veia][jag] == ' ') {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+
+void switchPlayer() {
+    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+}
+
+int main(){ //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	setlocale(LC_ALL,"portuguese");
+	system("title Mind Maze Mayhem");
+	system("color 0a");
+	system("start entrar.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+	
+	int idade, recomeco, check, point, repcheck, a, q, j, m, k, l, z, v, d, b, livro, rio, tipo, r1, sexta, modulo, abra, config, rcon, music, rmu, mini, jogadas, ganhas, perdidas, empatadas, sua, repeti, cpu, faca, x, y, caverna, lanterna, urso;
+	float n;
+	char nome[20], sn, ns;
+	 char comando[10] = "color ";
+    char cores[2];
+    int row, col, repm, indisponivel;
+	
+	int iniciar = 10;
+	
+	srand(time(0));
+	
+	printf(".................................................................................................................................................................................\n\nBem vindo ao Mind Maze Mayhem!\nUm incrivel jogo de quebra cabeça com diversos enigmas.");
+printf("Prepare-se para desvendar enigmas e descobrir segredos ocultos. Boa sorte!\n");
+printf("\nPara iniciar o jogo precisamos que você digite sua idade\n");
+	printf("digite sua idade: ");
+	scanf("%i", &idade);
+	system("cls");
+	music = 2;
+	
+	if(idade < 10){
+		system("color 0c");
+		printf("\n\n\t\t\tDesculpe, mas para jogar este jogo a idade minimia é 10\n\n\n\n");
+		
+	}else{
+	
+
+	do{
+		if(music == 2){
+	system("start music.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+	printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tMind Maze Mayhem\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tIniciar o Jogo --------- 4\n\t\t\t\t\t\t\t\t\tMini jogos   ----------- 3\n\t\t\t\t\t\t\t\t\tConfigurações ---------- 2\n\t\t\t\t\t\t\t\t\tSair do Jogo ----------- 1\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+	scanf("%i", &modulo);
+
+	switch(modulo){
+		
+		case 1: //sair do jogo
+			Sleep(500);
+			system("cls");
+			printf("\n\n\nAguarde:\t............................................");
+			Sleep(2000);
+			system("cls");
+			return 0;
+			
+			break;
+			
+			case 2: //configurações
+				rcon = 10;
+				do{
+				system("cls");
+				printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\t Configurações");
+				Sleep(500);
+				
+				printf("\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tAlterar cores  --------- 1\n\t\t\t\t\t\t\t\t\tAlterar musica --------- 2\n\t\t\t\t\t\t\t\t\t    Voltar     --------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+				scanf("%i", &config);
+				
+		switch(config){
+		
+		case 1: //config cores
+				
+	printf("\n\n");		
+	 printf ("Tabela de cores:\n\n");
+    printf ("\t0 - Preto\t8 - Cinza\n");
+    printf ("\t1 - Azul\t9 - Azul Claro\n");
+    printf ("\t2 - Verde\tA - Verde Claro\n");
+    printf ("\t3 - Verde Água\tB - Verde Água Claro\n");
+    printf ("\t4 - Vermelho\tC - Vermelho Claro\n");
+    printf ("\t5 - Roxo\tD - Lilás\n");
+    printf ("\t6 - Amarelo\tE - Amarelo Claro\n");
+    printf ("\t7 - Branco\tF - Branco Brilhante\n");
+    
+    printf ("\n\nCor de fundo: ");
+    scanf("%s", &cores[0]);
+    getchar();
+    
+    printf ("Cor do texto: ");
+    scanf("%s", &cores[1]);
+    
+    strcat(comando, cores);
+    system(comando);
+	cores[0] = 0;
+	cores[1] = 0;
+	system("cls");
+				break;
+				
+				case 2: //config musica
+				rmu = 10;
+				do{
+					printf("\n\n");
+				printf("\n\n1 ------ Musica desligada\n2 ------ Musica ligada\nDigite aqui: ");
+				scanf("%i", &music);
+				if(music >= 3 || music < 1){
+					printf("\n\nO número que você digitou está indisponivel, tente novamente.\n\n");
+					system("pause");
+					system("cls");
+				}else{
+					rmu++;
+				}
+				}while(rmu <= 10);
+				
+				break;
+				
+				case 3:
+					rcon++;
+					system("cls");
+					printf("\n\n\nAguarde:\t............................................");
+					Sleep(2000);
+					
+					break;
+					
+				default:
+				printf("\n\nVocê digitou um número indisponivel, tente novamente.\n\n");
+				system("pause");
+				printf("\n\n");
+				break;
+	}
+}while(rcon  <= 10);
+				break;
+				
+				case 3: //Mini jogos
+				repm = 10;
+				do{
+				system("cls");
+				printf("\n\n\nAguarde:\t............................................");
+				Sleep(2000);
+				if(music == 2){
+		system("start mini.game.mp3");
+		Sleep(500);
+		system("powershell -command (new-object -com shell.application).minimizeall()");
+		}
+				system("cls");
+				printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t     Mind Maze Mayhem\n\t\t\t\t\t\t\t\t\t\tMini jogos\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tJogo da velha -------- 1\n\t\t\t\t\t\t\t\t\t Jankenpon    -------- 2\n\t\t\t\t\t\t\t\t\t   Voltar     -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+				scanf("%i", &mini);
+				
+				switch(mini){
+					
+					case 1: //jogo da velha
+						
+						system("cls");
+    initializeBoard();
+    while (1) {
+        printBoard();
+        printf("Jogador %c, insira a linha (0, 1, 2): ", currentPlayer);
+        scanf("%d", &row);
+        printf("Jogador %c, insira a coluna (0, 1, 2): ", currentPlayer);
+        scanf("%d", &col);
+        if (row < 0 || row > 2 || col < 0 || col > 2 || board[row][col] != ' ') {
+            printf("Movimento inválido! Tente novamente.\n");
+            continue;
+        }
+        board[row][col] = currentPlayer;
+        if (checkWin()) {
+            printBoard();
+            printf("\n\nJogador %c venceu!\n\n", currentPlayer);
+            break;
+        }
+         if (checkDraw()) {
+            printBoard();
+            printf("\n\nO jogo terminou em empate!\n\n");
+            break;
+        }
+        switchPlayer();
+    }
+    system("pause");
+    
+    break;
+    
+    case 2: //Jankenpon
+    	jogadas=0; 
+		ganhas=0; 
+		perdidas=0; 
+		empatadas=0; 
+		sua=0; 
+		repeti=1; 
+		cpu=0;
+		do{
+			indisponivel = 10;
+			while(indisponivel <= 10){
+				system("cls");
+		printf(".................................................................................................................................................................................");
+    	printf("\n\n|\t\t\t\t1 -------- pedra\n|\t\t\t\t2 -------- papel\n|\t\t\t\t3 -------- tesoura\n-------------------------------------------------\n");
+    	indisponivel = 10;
+		printf("Rodadas jogadas --- %i\nRodadas ganhas --- %i\nRodadas perdidas --- %i\nRodadas empatadas --- %i\nSua jogada: ", jogadas, ganhas, perdidas, empatadas);
+    	scanf("%i", &sua);
+    	cpu = rand() % 3 + 1;
+    	
+    	if(sua < 1 || sua > 3){
+    		printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+    		Sleep(3000);
+    	
+		}else{
+    	indisponivel++;
+    	if(sua == cpu){
+    		printf("\n\nempate\n\n");
+    		Sleep(4000);
+    		empatadas++;
+    	
+		}else{
+			if(sua == 1 && cpu == 3){
+				printf("\n\nRodada ganha\n\n");
+				Sleep(4000);
+				ganhas++;
+			
+			}else{
+		if(sua == 2 && cpu == 1){
+				printf("\n\nRodada ganha\n\n");
+				Sleep(4000);
+				ganhas++;
+			}else{
+				if(sua == 3 && cpu == 2){
+					printf("\n\nRodada ganha\n\n");
+				Sleep(4000);
+				ganhas++;
+			
+			}else{
+				printf("\n\nRodada perdida\n\n");
+				Sleep(4000);
+				perdidas++;
+			}
+		}
+		}
+		}
+	}
+	if(sua >= 1 && sua <= 3){
+    	printf("Jogada do Bot: %i\n\n", cpu);
+    	jogadas++;
+    	repeti++;
+    }
+		system("pause");
+}
+}while(repeti <= 5);
+		if(empatadas == jogadas || ganhas == perdidas){
+			printf("\n\nFim de jogo, o resultado foi cinco rodadas e terminou em empate com %i vitórias, %i derrotas e %i empates.\n\n", ganhas, perdidas, empatadas);
+			system("pause");
+		}else{
+			if(ganhas > perdidas){
+				printf("\n\nFim de jogo, o resultado foi cinco rodadas e você ganhou com %i vitórias, %i derrotas e %i empates.\n\n", ganhas, perdidas, empatadas);
+			system("pause");
+			}else{
+				printf("\n\nFim de jogo, o resultado foi cinco rodadas e você perdeu com %i vitórias, %i derrotas e %i empates.\n\n", ganhas, perdidas, empatadas);
+			system("pause");
+			}
+		}
+    	break;
+				
+				case 3:
+					repm++;
+					system("cls");
+					printf("\n\n\nAguarde:\t............................................");
+					Sleep(2000);
+					
+					break;
+				default:
+				printf("\n\nVocê digitou um número além dos referidos, tente novamente!");
+				
+				break;	
+				}
+			}while(repm <= 10);
+					break;
+				
+				case 4: //iniciar o jogo -----------------------------------------------------------------------------------------------------------------------------------------------
+				//----------------------------------------------------------------------------------------------------------------
+	system("cls");
+	if(music == 2){
+	system("start entrar.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+	recomeco = 10;
+do{
+	printf("\n\n\nAguarde:\t............................................");
+	Sleep(5000);
+	system("cls");
+	
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\tMind Maze Mayhem\n\n\n");
+		printf("No alvorecer de um dia nebuloso, um detetive de renome na era medieval, chegou à pitoresca vila de Eldoria. \nMontado em seu imponente cavalo negro, ele adentrou a vila com uma postura digna e resoluta, seus olhos perscrutando cada detalhe ao seu redor. \nEldoria, cercada por muralhas de pedra e com ruas pavimentadas de paralelepípedos, exalava uma atmosfera de mistério e história. \nDetetive conhecido por sua astúcia e habilidade em desvendar os mais intrincados enigmas \nfora convocado pelo conselho da vila para investigar uma série de eventos perturbadores que vinham assombrando os moradores. \nAo descer de seu cavalo, ele foi recebido pelo ancião da vila, Lorde Eadric, um homem de idade avançada, mas com um olhar ainda cheio de vigor e sabedoria.\n\n");
+		system("pause");
+		if(music == 2){
+	system("start zelda.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+		
+		printf("\n\n-Lorde Eadric: Bem vindo a Eldoria. \n-Lorde Eadric: Estamos gratos por sua presença. A vila tem sido palco de acontecimentos estranhos e inquietantes. Precisamos de sua ajuda para restaurar a paz e a ordem.\n");
+	Sleep(2000);
+	v = 10;
+	while(v <= 10){
+	
+		printf("\n\n-Lorde Eadric: Nos diga seu nome meu caro detetive: ");
+		scanf("%s", nome);
+		 if (strcmp(nome, "Hitler") == 0|| (strcmp(nome, "hitler") == 0 ||(strcmp(nome, "cachorro") == 0 ||(strcmp(nome, "macaco") == 0 || (strcmp(nome, "penis") == 0 || (strcmp(nome, "semen") == 0 || (strcmp(nome, "buceta") == 0 || (strcmp(nome, "rola") == 0 || (strcmp(nome, "pau") == 0 || (strcmp(nome, "pussy") == 0 || (strcmp(nome, "cu") == 0 || (strcmp(nome, "puta") == 0 || (strcmp(nome, "nigga") == 0 ||(strcmp(nome, "porno") == 0 || (strcmp(nome, "caralho") == 0 || (strcmp(nome, "cucabeludo") == 0|| (strcmp(nome, "pinto") == 0 || (strcmp(nome, "piroca") == 0 || (strcmp(nome, "bucetuda") == 0 || (strcmp(nome, "pirokona") == 0 )))))))))))))))))))) {
+		 printf("\n\nNome indisponivel, tente novamente\n\n");
+		 Sleep(2000);
+		 system("pause");
+		 }else{
+		 if(strcmp(nome, "rick") == 0 || (strcmp(nome, "Astley") == 0 || (strcmp(nome, "rick_astley") == 0 || (strcmp(nome, "Rick_Astley") == 0 || (strcmp(nome, "Rick") == 0))))){
+		 	v++;
+		 	printf("\n\t\t\t\tyou were rickrolled");
+		system("start never.gonna.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+			 Sleep(15000);
+			 printf("\n\n");
+			 system("pause");
+			printf("\n\n");
+		 }else{
+		 v++;
+		  printf("-%s: Meu nome é %s, Lorde Eadric.\n", nome, nome);
+		  
+}
+}
+	}
+	d = 10;
+		while(d <= 10){
+			
+		printf("\n-Lorde Eadric: Você poderia ajudar Eldoria %s?\n(S para sim/N para não): ", nome);
+		scanf(" %c", &sn);
+		if(sn == 'n'){
+			d++;
+			system("cls");
+			if(music == 2){
+	system("start bad.end.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+			system("color 0c");
+			printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n-%s: Não poderei ajuda-los sinto muito, até mais.\n-Lorde Eadric: Mas?\n-Lorde Eadric: Tudo bem irei achar alguem que se importe com nossa vila.", nome);
+			printf("\n\n\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n");
+			printf("\t\t\t\t\t\t\t\t\t\tFinal ruim.\n\t\t\t\t\t\t\t\t\tO detetive não ajudou Eldoria.\n\n\n\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n");
+		system("pause");
+		Sleep(1000);
+		system("cls");
+		system("color 0a");
+		repcheck = 10;
+		do{
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tRecomeçar            -------- 1\n\t\t\t\t\t\t\t\t\tVoltar ao checkpoint -------- 2\n\t\t\t\t\t\t\t\t\tVoltar ao menu       -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+		scanf("%i", &check);
+		
+		switch(check){
+			
+			case 1:
+				repcheck++;
+				break;
+				
+				case 2:
+					repcheck++;	
+					break;
+	
+					case 3:
+						recomeco++;
+					repcheck++;		
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							system("pause");
+							Sleep(2000);
+							system("cls");
+							break;
+							
+		}
+	}while(repcheck <= 10);
+		}else{
+			if(sn == 's'){
+		d++;
+		printf("\n-%s: Vai ser uma honra servir a Eldoria, meu senhor. Conte-me mais sobre esses eventos.\n\n", nome);
+		system("pause");
+		
+		printf("\n\n-Lorde Eadric: desaparecimentos misteriosos, sons estranhos durante a noite e avistamentos de figuras sombrias nas florestas ao redor da vila. \nOs moradores estam tomados pelo medo, e a atmosfera de Eldoria, outrora pacífica, agora esta carregada de tensão e desconfiança.\n");
+		Sleep(2000);
+		printf("\n-%s: Entendo, poderia conversar com algum morador?", nome);
+		Sleep(2000);
+		printf("\n-Lorde Eadric: Claro me acompanhe.");
+	Sleep(2000);
+		printf("\n\n\nAguarde:\t............................................\n\n\n");
+		Sleep(6000);
+		system("pause");
+		printf("\n\n-Lorde Eadric: Essa casa é de uma senhora que viu coisas anormais recentemente.\n");
+		Sleep(2000);
+		printf("-Senhora Eleanor: Lorde Eadric, o que te traz aqui?\n");
+		Sleep(2000);
+		printf("-Lorde Eadric: Trago um renomado detetive chamado %s, para ajudar a nós.\nPor favor peço que você nos deixe entrar, ele ira fazer algumas perguntas.\n", nome);
+		Sleep(2000);
+		printf("-Senhora Eleanor: Claro entrem, só não se preocupem com meu filho, ele é bem barulhento.\n");
+		Sleep(3000);
+		printf("Senhora Eleanor: Detetive %s? o que quer saber?\n\n\n", nome);
+		
+		b = 10;
+		while(b <= 10){
+		printf("1: O que a senhora viu recentemente?\n2: O que a senhora faz noite? fica com medo?\nDigite aqui: ");
+		scanf("%i", &a);
+		
+		switch(a){
+			case 1:
+				b++;
+				Sleep(2000);
+				printf("\n\n-%s: O que a senhora viu recentemente?", nome);
+				Sleep(1000);
+				printf("\n-Senhora Eleanor: Bom fico arrepiada quando falo sobre isto mas tudo bem.\nEstava voltando do rio com as roupas lavadas, quando derrepente escuto um assovio vindo do outro lado do rio.\nQuando me viro e olho para do outro lado do rio, vejo um homem de capuz marrom com um machado na mão.\nEle... ele entrou na minha mente parece, e disse coisas horrorosas, Depois disso sai correndo e não volto ao rio até hoje.\n\n\n");
+			break;
+			
+			case 2:
+				b++;
+				Sleep(2000);
+				printf("\n\n-%s: O que a senhora faz noite? fica com medo?", nome);
+				Sleep(1000);
+				printf("\n-Senhora Eleanor: Normalmente eu espero na varanda até meu marido chegar.\nDepois disso coloco meu filho para dormir e peço ao meu marido para pegar a espingarda e deixar ao lado da cama.\nNós estamos com muita dificuldade em dormir, com medo desses 'Homens de capuz'.\n\n\n");
+				break;
+				default:
+					printf("\n\nDesculpe mais você digitou um número alem dos referidos\nTente novamente\n\n");
+				
+					break;
+		}
+	}
+	system("pause");
+	printf("\n\n\n-%s: Interessante.", nome);
+	  Sleep(2000);
+	  printf("\n-Drake Cadman: Olá? quem é você?");
+	  Sleep(2000);
+	  printf("\n-Senhora Eleanor: Ao Drake, esse é o detetive %s, e aquele eu acho que você já conhece.", nome);
+	  Sleep(2000);
+	  printf("\n-Drake Cadman: Claro, Lorde Eadric. Oque traz vocês aqui?");
+	  Sleep(2000);
+	  printf("\n-Alexandre: Papai! Por que voltou mais cedo hoje?");
+	  Sleep(2000);
+	  printf("\n-Drake Cadman: Bom sabotaram o forno da ferraria de Eldoria, e meu colega Arthur se machucou feio.\nAi fomos dispensados mais cedo.\n");
+	  Sleep(2000);
+	  printf("\n-%s: Hmmm... Talvez possa ter sido esses 'Homens de capuz'.\n", nome);
+	  Sleep(3000);
+	  printf("-Drake Cadman: Quem?");
+	  Sleep(1000);
+	  printf("\n-Senhora Eleanor: Verdade.\n");
+	  Sleep(2000);
+	  printf("-%s: Poderia fazer mais algumas perguntas Senhora?\n", nome);
+	  Sleep(2000);
+	  printf("-Senhora Eleanor: Claro, fique a vontade\n");
+	  
+	  z = 10;
+	  while(z <= 10){
+	  	printf("\n\n1: Me conte mais sobre esses homens de capuz\n2: Seu marido Drake tem alguma informação sobre os homens de capuz?\ndigite aqui: ");
+	  	scanf("%i", &a);
+	  	
+	  	switch(a){
+	  		case 1:
+	  			z++;
+	  			Sleep(2000);
+	  			printf("\n\n-%s: Me conte mais sobre esses homens de capuz.\n", nome);
+	  			Sleep(2000);
+	  			printf("\n-Senhora Eleanor: Acho q isso é tudo que sei, mas tenho um livro que fala um pouco sobre esses homens de capuz no passado.\nPegue, leve com você, talvez possa ajudar.");
+	  			Sleep(2000);
+				  printf("\n\t\tItem adicionado ao inventário 'Livro'\n");
+	  			livro = 1;
+	  			lanterna = 0;
+	  			Sleep(3000);
+	  			printf("-%s: Obrigado, com certeza será útil.\n\n", nome);
+	  			system("pause");
+	  		break;
+	  		
+	  		case 2:
+	  			z++;
+	  			Sleep(2000);
+	  			printf("\n\n-%s: Seu marido Drake tem alguma informação sobre os homens de capuz?",nome);
+	  			Sleep(2000);
+	  			printf("\n-Drake Cadman: Alguns amigos meus já me disseram que eles possivelmente mataram alguem na taverna.\nNão acho que possa ter sido eles, mas estava com um machado totalmente ensanguentado ao lado do corpo.");
+	  			Sleep(3000);
+	  			printf("\n-%s: Interessante, algo mais?", nome);
+	  			Sleep(2000);
+	  			printf("\n-Drake Cadman: Não, acho que não, apenas isso\n\n");
+	  			livro = 0;
+	  			lanterna = 1;
+	  			printf("\n-Drake Cadman: Espere! pegue isto, uma lanterna.");
+	  			Sleep(1000);
+	  			printf("\n-Drake Cadman: Meu amigo Arthur me entregou quando estava indo à enfermaria, espero que o ajude");
+	  			Sleep(2000);
+	  			printf("\n-%s: Sim claro, irá ser muito útil, obrigado sr.Cadman.", nome);
+	  			Sleep(1000);
+	  			printf("\n\t\tItem adicionado ao inventário: 'Lanterna'\n\n");
+	  			system("pause");
+	  			break;
+	  			
+	  			default:
+	  					printf("\n\nDesculpe mais você digitou um número alem dos referidos\nTente novamente\n\n");
+					system("pause");
+					break;
+	  	}
+	  	
+	  }
+	  
+	  Sleep(2000);
+	  printf("\n\n-Lorde Eadric: acho que deviriamos ir ao conselho detetive %s.", nome);
+	  Sleep(2000);
+	  printf("\n-Senhora Eleanor: Ou talvez vocês podem ir ao rio investigar!");
+	  Sleep(3000);
+	  b = 10;
+	  
+	  while(b <= 10){
+	  	
+	  printf("\n\n1: Ir ao conselho.\n2: Ir ao rio investigar.\nDigite aqui: ");
+	  scanf("%i", &a);
+	  
+	  switch(a){
+	  	
+	  	case 1:
+	  		 b++;
+	  		 printf("\n\n-%s: Exelente ideia Lorde Eadric vamos ao conselho.\n", nome);
+	  		 Sleep(2000);
+	  		 printf("-%s: Talvez depois podemos ir ao rio investigar.", nome);
+	  		 Sleep(2000);
+	  		 	printf("\n\n\nAguarde:\t............................................\n\n\n");
+	  		 	Sleep(6000);
+	  		 	system("pause");
+	  		 	
+	  		 	printf("\n\n\n");
+	  		 	printf("-%s: Você acha que eles teram boas pistas?\n", nome);
+	  		 	Sleep(3000);
+	  		 	printf("-Lorde Eadric: Possivelmente\n");
+	  		 	Sleep(1000);
+	  		 	printf("-Conselheiro Mestre: Olá Eadric, e quem seria você?\n");
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Olá eu sou o detetive %s fui chamado a Eldoria pelo Lorde Eadric para solucionar os mistérios e desaparecimentos.\n", nome, nome);
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Eu gostaria de saber algumas informações.\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-Conselheiro Mestre: Que tipo de informação?\n\n");
+	  		 	Sleep(2000);
+	  		 	a = 0;
+	  		 	d = 10;
+	  		 	while(d <= 10){
+	  		 	printf("1: O que assombra os moradores?\n2: O que vocês sabem sobre os 'Homens de capuz'?\n3: Vocês tem guardas na vila?\nDigite aqui: ");
+	  		 	scanf("%i", &q);
+	
+	  		 	switch(q){
+	  		 		
+	  		 		case 1:
+	  		 			rio = 0;
+	  		 			d++;
+	  		 			Sleep(1000);
+	  		 			printf("\n\n-%s: O que assombra os moradores?", nome);
+	  		 			Sleep(2000);
+	  		 			printf("\n-Conselheiro Mestre: Achamos que possa ser alguns lobos selvagens.\n");
+	  		 			Sleep(2000);
+						printf("-Conselheiro Júnior: Ou talvez alguns Homens de uma gangue de outra vila\n");
+	  		 			
+	  		 		break;
+	  		 			
+	  		 			case 2:
+	  		 				rio = 0;
+						   d++; 
+						   Sleep(1000);
+						   printf("\n\n-%s: O que vocês sabem sobre os 'Homens de capuz'?", nome);
+						   Sleep(2000);
+	  		 			printf("\n-Conselheiro Mestre: Homens de capuz?\n");
+	  		 			Sleep(2000);
+	  		 			printf("-Conselheiro Júnior: Já ouvi falar sobre.\n");
+	  		 			Sleep(2000);
+	  		 		printf("-Conselheiro Júnior: Eles assombram a vila a mais de uma semana.\n");
+	  		 		Sleep(2000);
+	  		 		printf("-Conselheiro Júnior: No passado, nossos ancestrais presenciaram certos incidentes.\nBem quando Eldoria estava sendo construida vários seres misteriosos foram expulsos deste território.\nSeres carecas, com orelhas grandes e mãos pequenas.");
+	  		 		Sleep(2000);
+	  		 		printf("-Conselheiro Júnior: Nosso fundador Sigmund, apresentou a eles um machado antes de expulsa-los.");
+	  		 		Sleep(2000);
+	  		 		printf("-Conselheiro Mestre: Foi o que me disseram.");
+	  		 		Sleep(2000);
+	  		 		printf("-%s: Muito sábio de sua parte meu amigo, interessante saber.", nome);
+	  		 			
+	  		 			break;
+	  		 			
+	  		 			case 3:
+	  		 				d++;
+	  		 				rio = 1;
+	  		 				Sleep(1000);
+	  		 				printf("\n\n-%s: Vocês tem guardas na vila?", nome);
+	  		 				Sleep(2000);
+							printf("-Conselheiro Mestre: Sim existem diversos guaras aqui na vila.\n");
+	  		 				Sleep(2000);
+							printf("-Conselheiro Júnior: Por que deseja saber isto?\n");
+							Sleep(2000);
+	  		 				printf("-%s: Talvez possamos cercar um deles perto do rio, onde eles mais apareceram.\n", nome);
+	  		 				Sleep(2000);
+	  		 				printf("-Conselheiro Mestre: Excelente ideia detetive!\n");
+	  		 				
+	  		 				m = 10;
+	  		 				while(m <= 10){
+							   Sleep(1000);
+	  		 				printf("\n\n1: Ir ao rio agora\n2: Aguardar mais informações\nDigite aqui: ");
+	  		 				scanf("%i", &j);
+							   
+							   switch(j){
+							   	
+								   case 1:
+	  		 					m++;
+	  		 					Sleep(1000);
+	  		 					printf("\n\n-%s: Podemos ir ao rio cercar eles com os guardas agora.\n", nome);
+	  		 					Sleep(2000);
+	  		 					printf("-Conselheiro Mestre: Talvez seja melhor procuramos mais pistas.\n");
+							   
+							   break;
+							   
+							   case 2:
+							   	m++;
+							   	Sleep(1000);
+							   	printf("-%s: Acho melhor procuramos mais algumas pistas e cerca-los perto do rio.\n", nome);
+							   	Sleep(2000);
+							   	printf("-Conselheiro Mestre: Concordo com você detetive %s.\n", nome);
+							   	
+							   	break;
+							   	
+							   	default:
+							   		Sleep(1000);
+							   		printf("\n\nVocê digitou um número além dos referidos tente novamente.\n\n");
+							   		Sleep(1000);
+							   		
+							   		break;
+							   }
+						}
+	  		 				
+	  		 				break;
+	  		 				
+	  		 				default:
+	  		 					printf("\n\nVocê digitou um número além dos referidos, tente novamente.\n\n");
+	  		 					
+	  		 					break;
+				   }
+			}
+			Sleep(3000);
+			printf("-Conselheiro Mestre: Você tem algum item que possa ser observado por nós conselheiros, para nos ajudar?\n");
+			Sleep(2000);
+			
+			if(livro == 1){
+				printf("-%s: Sim! Eu tenho um livro que a senhora Eleanor me entregou.\n", nome);
+				Sleep(2000);
+				printf("-%s: Aqui! Peguem.\n", nome);
+				Sleep(2000);
+				printf("-Conselheiro Mestre: Agradecemos sua gentileza, iremos analisar este livro.\n");
+				
+			
+			}else{
+				printf("-%s: Não, infelizmente não tenho nada.\n", nome);
+				Sleep(2000);
+				printf("-Conselheiro Mestre: Tudo bem, iremos procurar algo na bibilioteca.");
+			}
+	  		 	
+	  		 break;
+	  		 
+	  		 case 2:
+	  		 	b++;
+	  		 	rio = 1;
+	  		 	printf("\n\n-%s: Ótimo Senhora Eleanor, vou ao rio, lá poderei investigar sobre os homens de capuz.", nome);
+	  		 	 Sleep(2000);
+	  		 	 printf("\n-%s: Adeus para todos vocês, espero vê-los em breve.\n\n", nome);
+	  		 	 Sleep(2000);
+	  		 	printf("\n\n\nAguarde:\t............................................\n\n\n");
+	  		 	Sleep(6000);
+	  		 	if(music == 2){
+	  		 	system("start musrio.mp3");
+	  		 	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+	  		 }
+	  		 	system("pause");
+	  		 	printf("\n\n-%s: Ótimo, agora que estou aqui no rio devo olhar cada detalhe disponivel.\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Hmm... O que é isto?\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-Desconhecido: Ei quem é você?\n");
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Sou o detetive %s, chamado pelo Lorde Eadric para ajudar a vila.\n", nome, nome);
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Enquanto a você, qual seu nome?\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-Takashi Ozawa: Sou o Takashi, Takashi Ozawa.\n");
+	  		 	Sleep(2000);
+	  		 	printf("-%s: E o que você está fazendo aqui no meio da floresta, perto do rio?\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-%s: É perigoso! tem certos problemas ocorrendo na vila.\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-%s: Além disso, Ozawa? Você é estrangeiro?\n", nome);
+	  		 	Sleep(2000);
+	  		 	printf("-Takashi Ozawa: Sim sou do japão, meus pais me trouxeram aqui para Europa, e me abandonaram nesta vila.\n");
+	  		 	Sleep(2000);
+	  		 	printf("-Takashi Ozawa: Tinha 5 anos, até o Eadric me achar.\n");
+	  		 	Sleep(2000);
+	  		 	printf("-Takashi Ozawa: Ele me levou para vila, mas por eu ser 'diferente' não me deixaram ficar.\n");
+	  		 	Sleep(2000);
+				printf("-Takashi Ozawa: Então eu e ele fizemos uma cabana, ele traz comida e água todo dia.\n");
+				Sleep(2000);
+				printf("-%s: Oow, que triste, e qual o nome do seu pai?\n", nome);
+				Sleep(2000);
+				printf("-Takashi Ozawa: Vinicius Yuji Ozawa, aquele desgraçado!\n");
+				Sleep(4000);
+				printf("-%s: Tudo bem, mas você sabe algo sobre os Homens de capuz?\n", nome);
+				Sleep(2000);
+				printf("-Takashi Ozawa: Homens de capuz? Você não quer dizer os Sentinelas da Aurora?\n");
+				Sleep(2000);
+				printf("-%s: Interessante, então esse é o nome.\n", nome);
+				Sleep(2000);
+				l = 10;
+				
+				while(l <= 10){
+				
+				printf("\n\n1: O que mais você sabe sobre os Sentilenas da Aurora?\n2:Você já viu algum membro dos Sentilenas da Aurora?\nDigite aqui: ");
+				scanf("%i", &k);
+				
+				switch(k){
+					
+					case 1: 
+					l++;
+					printf("\n\n-%s: O que mais você sabe sobre os Sentilenas da Aurora?\n\n", nome);
+					Sleep(2000);
+					printf("\n-Takashi Ozawa: Bom que eu saiba eles não são humanos.\n");
+					Sleep(2000);
+					printf("-%s: Como assim? São monstros ou algo do tipo?\n", nome);
+					Sleep(2000);
+					printf("-Takashi Ozawa: É, talvez, eles são goblins. Eu acho.\n");
+					Sleep(2000);
+					printf("-Takashi Ozawa: Eles tentam roubar minhas coisas a todo momento.\n");
+					Sleep(2000);
+					printf("-%s: Você chegou a ver eles robando você?\n", nome);
+					Sleep(2000);
+					printf("-Takashi Ozawa: Sim, vi, eles vem aqui toda sexta se não estou enganado.\n");
+					Sleep(2000);
+					printf("-Takashi Ozawa: Já que você é um detetive por que não fica uma sexta feira aqui e tenta pegar um deles?\n");
+					Sleep(2000);
+					
+					abra = 10;
+					while(abra <= 10){
+		
+					printf("\n\nDigite(s: Sim/n: Não): ");
+					scanf("%c", &ns);
+					Sleep(2000);
+					
+					if(ns == 's'){
+						sexta = 1;
+						abra++;
+						printf("\n\n-%s: Claro, nesta sexta virei aqui.\n", nome);
+						Sleep(2000);
+						printf("-Takashi Ozawa: Aguardarei por você.\n");
+						Sleep(2000);
+						
+					}else{
+						if(ns == 'n'){
+							sexta = 0;
+							abra++;
+							printf("\n\n-%s: Acho melhor não, devo investigar mais na vila, mas obrigado por oferecer.\n", nome);
+							Sleep(2000);
+							printf("-Takashi Ozawa: Tudo bem, se precisar de ajuda estou disponivel sempre.\n");
+							Sleep(2000);
+						
+						}else{
+							printf("\n\n-Takashi Ozawa: Não entendi, poderia repetir.\n\n");
+							Sleep(1000);
+						}
+					}
+				}
+					break;
+					
+					case 2:
+						l++;
+						printf("\n\n-%s: Você já viu algum membro dos Sentilenas da Aurora?\n\n", nome);
+						Sleep(2000);
+						printf("-Takashi Ozawa: Sim, claro, diversas vezes.\n");
+						Sleep(2000);
+						printf("-%s: E como eles se parecem?\n", nome);
+						Sleep(2000);
+						printf("-Takashi Ozawa: Eles são baixos usam mantos a todo momento, e dizem por ai que são goblins.\n");
+						Sleep(2000);
+						printf("-%s: Goblins né? Interessante, pelo que eu andei lendo gostam bastante de roubar e fazer traquinagens certo?\n", nome);
+						Sleep(2000);
+						printf("-Takashi Ozawa: Sim, goblins são muito traiçoeiros, nunca deve-se confiar em um goblin.\n");
+						
+						break;
+						
+						default:
+						printf("\n\nEsse número não está referido, por favor tente novamente.\n\n");
+							
+							break;
+				}
+				
+				printf("\n-%s: Bom, acho melhor eu continuar a procurar, já está ficando tarde.\n", nome);
+				Sleep(1000);
+				printf("\n...\n");
+				Sleep(4000);
+				printf("\nTakashi Ozawa: Ei espera! pegue isto.\n");
+				Sleep(1000);
+				printf("\n\t\tItem adicionado ao inventário 'Faca'\n\n");
+				Sleep(1000);
+				printf("%s: Oow, uma faca? ok então, será utíl.", nome);
+				faca = 1;
+				Sleep(2000);
+				printf("\n%s: Eu acho.", nome);
+				Sleep(2000);
+				printf("\n%s: Adeus Takashi, espero vê-lo em breve", nome);
+				Sleep(4000);
+				
+				printf("\n\n...\n");
+				Sleep(4000);
+				printf("\n%s: Aquilo é uma caverna? será que devo ir lá?", nome);
+				Sleep(3000);
+				
+				x = 10;
+				do{
+				printf("\n\n1: Ir à caverna\n2: ficar na floresta perto do rio\nDigite aqui: ");
+				scanf("%i", &caverna);
+				
+				switch(caverna){
+					
+					case 1:
+						caverna = 1;
+						Sleep(1000);
+						printf("\n\n%s: Sim, claro por que não?", nome);
+						Sleep(2000);
+					printf("\n\n\nAguarde:\t............................................\n\n\n");
+	  		 		Sleep(5000);
+	  		 		if(music == 2){
+	  		 	system("start caverna.mp3");
+	  		 	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+	  		 }
+	  		 system("pause");
+	  		 printf("\n\n-%s: Está muito escuro não enxergo nada!", nome);
+	  		 Sleep(2000);
+	  		 if(lanterna == 1){
+	  		 	printf("\n-%s: Ainda bem que o Senhor Drake me deu esta lanterna.", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Não parece ter nada aqui.", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Ou talvez, hmm... pinturas?", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: O que deve ser essas pinturas?", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Isso é os sentinelas da aurora?", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Eles...", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Eles vão atacar a vila!", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Preciso avisar a todos!", nome);
+	  		 	Sleep(3000);
+	  		 	printf("\n-%s: Anh? o que é isto? que barulho foi este?", nome);
+	  		 	Sleep(4000);
+	  		 	printf("\n-%s: Meu Deus é um urso!!", nome);
+	  		 	Sleep(1000);
+	  		 
+			   }else{
+			   	printf("\n-%s: Não tenho nada para iluminar o caminho, vou ter que avançar no escuro.", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Não vejo nada!", nome);
+			   	Sleep(3000);
+			   	printf("\n-%s: Arhg!", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Ai, essa pedra no meio do caminho o que está fazendo ai? parece que alguem moveu ela.", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Parece ter alguns desenhos nessa pedra.", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Oow...", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Os sentinelas da aurora estão planejando atacar a vila!", nome);
+			   	Sleep(2000);
+			   	printf("\n-%s: Anh? o que é isto? que barulho foi esse?", nome);
+			   	Sleep(4000);
+			   	printf("\n-%s: Ai meu Deus é um urso!!", nome);
+			   	Sleep(1000);
+			   }
+			   y = 10;
+			   do{
+			   	if(urso == 1 || urso == 3 && music == 2){
+			   		system("start caverna.mp3");
+	  		 	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+			   	}
+						printf("\n\nO que o detetive deve fazer?\n1: Correr\n2: jogar a faca contra o urso\n3: se esconder atrás da pedra\nDigite aqui: ");
+						scanf("%i", &urso);
+						
+						switch(urso){
+						
+						case 1:
+							system("cls");
+			if(music == 2){
+	system("start bad.end.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+			system("color 0c");
+			printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n-%s: Vou correr o mais rápido que puder\n-%s: Ahhh ele está chegando perto!\n-%s: Ahhhh!!!", nome, nome, nome);
+			printf("\n\n\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n");
+			printf("\t\t\t\t\t\t\t\t\t\tFinal ruim.\n\t\t\t\t\t\t\t\t\tO detetive foi morto.\n\n\n\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n");
+		system("pause");
+		Sleep(1000);
+		system("cls");
+		system("color 0a");
+		repcheck = 10;
+		do{
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tRecomeçar            -------- 1\n\t\t\t\t\t\t\t\t\tVoltar ao checkpoint -------- 2\n\t\t\t\t\t\t\t\t\tVoltar ao menu       -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+		scanf("%i", &check);
+		
+		switch(check){
+			
+			case 1:
+				recomeco = 10;
+				point++;
+				repcheck++;
+				break;
+				
+				case 2:
+					repcheck++;
+					y--;
+					system("cls");
+					Sleep(2000);
+						printf("\n\n\nAguarde:\t............................................\n\n\n");
+						Sleep(5000);
+						system("cls");
+					break;
+	
+					case 3:
+						recomeco++;
+						point++;
+					repcheck++;		
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							system("pause");
+							Sleep(2000);
+							system("cls");
+							break;
+							
+		}
+	}while(repcheck <= 10);
+							
+							y++;
+							break;
+							
+							case 2:
+							printf("\n-%s: Vou arremessar a faca do Takashi! Tomará que eu acerte.", nome);
+							Sleep(5000);
+							faca = 0;
+							printf("\n-%s: Consegui, acertei! Ele morreu?", nome);
+							Sleep(2000);
+							printf("\n-%s: Ele está morto, mas a faca foi destruida", nome);
+							Sleep(2000);
+							printf("\n-%s: Ufa, ainda bem que o takashi me deu está faca.", nome);
+							Sleep(2000);
+							printf("\n-%s: Acho que não deve ter mais nada aqui, devo voltar para floresta", nome);
+							Sleep(2000);
+							printf("\n\n\nAguarde:\t............................................\n\n\n");
+							Sleep(4000);
+								
+								y++;
+								break;
+								case 3:
+									system("cls");
+			if(music == 2){
+	system("start bad.end.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+			system("color 0c");
+			printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n-%s: Preciso me esconder rápido!\n-%s: Ali! atrás daquela pedra.\n-%s: Espero que ele não me encontre aqui.\n-%s: Ahhh!!", nome, nome, nome, nome);
+			printf("\n\n\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n");
+			printf("\t\t\t\t\t\t\t\t\t\tFinal ruim.\n\t\t\t\t\t\t\t\t\t\tO detetive foi morto.\n\n\n\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n");
+		system("pause");
+		Sleep(1000);
+		system("cls");
+		system("color 0a");
+		repcheck = 10;
+		do{
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tRecomeçar            -------- 1\n\t\t\t\t\t\t\t\t\tVoltar ao checkpoint -------- 2\n\t\t\t\t\t\t\t\t\tVoltar ao menu       -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+		scanf("%i", &check);
+		
+		switch(check){
+			
+			case 1:
+				recomeco = 10;
+				point++;
+				repcheck++;
+				break;
+				
+				case 2:
+					y--;
+					repcheck++;	
+					system("cls");
+					Sleep(2000);
+						printf("\n\n\nAguarde:\t............................................\n\n\n");
+						Sleep(5000);
+						system("cls");
+					break;
+	
+					case 3:
+						point++;
+						recomeco++;
+					repcheck++;		
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							system("pause");
+							Sleep(2000);
+							system("cls");
+							break;
+							
+		}
+	}while(repcheck <= 10);
+									
+									y++;
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+						break; 
+					
+				
+						}
+					}while(y == 10);
+						x++;
+						break;
+						case 2:
+							caverna = 0;
+							printf("\n\n-%s: Na verdade acho melhor ficar aqui, deve ser perigoso na caverna.", nome);
+							Sleep(2000);
+							printf("\n-%s: Vou até aquelas arvores, deve ter algo de interessante lá.", nome);
+							Sleep(2000);
+							printf("\n\n...\n");
+							Sleep(4000);
+							printf("\n-%s: O que é isto? Cabanas, não são do Takashi.", nome);
+							Sleep(2000);
+							printf("\n-%s: Vou chegar mais perto.", nome);
+							Sleep(2000);
+							printf("\n-%s: Essas cabanas, esses desenhos, parecem goblins!", nome);
+							Sleep(2000);
+							printf("\n-%s: Aqui deve ser aonde os membros do Sentinelas da Auroa vivem.", nome);
+							Sleep(2000);
+							printf("\n-%s: Eles parecem estar planejando um ataque.", nome);
+							Sleep(2000);
+							printf("\n-%s: Ai meu Deus! Eles vão atacar a vila.", nome);
+							Sleep(2000);
+							printf("\n-%s: Preciso alertar o Lorde Eadric! mas antes vou investigar mais.", nome);
+							printf("\n\n...\n");
+							Sleep(4000);
+							printf("\n-Membro dos Sentinelas da Aurora: Uga Buga!");
+							Sleep(2000);
+							printf("\n-%s: Ahhh! um goblin? Ele tem uma lança! E vai me atacar.", nome);
+							Sleep(2000);
+							
+							y = 10;
+							do{
+								if(urso == 2 || urso == 3 && music == 2){
+									system("start entrar.mp3");
+									Sleep(500);
+									system("powershell -command (new-object -com shell.application).minimizeall()");
+								}
+							printf("\n\nO que o detetive deve fazer?\n1: Correr\n2: usar a faca contra o goblin\n3: se esconder dentro da cabana\nDigite aqui: ");
+						scanf("%i", &urso);
+						
+						switch(urso){
+						
+						case 1:
+								printf("\n\n-%s: Vou correr o mais rapido que puder!", nome);
+								Sleep(2000);
+								printf("\n-%s: Ahhh!", nome);
+								Sleep(5000);
+								printf("\n-%s: Acho que despistei ele", nome);
+								Sleep(2000);
+								printf("\n-%s: Não Acho bom ficar aqui.", nome);
+								Sleep(2000);
+								
+								urso = 2;
+								y++;
+							break;
+							
+							case 2:
+							system("cls");
+			if(music == 2){
+	system("start bad.end.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+			system("color 0c");
+			printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n-%s: Vou usar a faca do Takashi!\n-%s: Hahaha, quem ri por ultimo ri melhor\n-%s: Você está gritando?\n-Membro dos Sentinelas da Aurora: Ugaaaa!\n-%s: Ele ta chamando reforços!!\n-%s: São muitos!!\n-%s: Ahhh!!!", nome, nome, nome, nome, nome, nome);
+			printf("\n\n\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n");
+			printf("\t\t\t\t\t\t\t\t\t\tFinal ruim.\n\t\t\t\t\t\t\t\t\tO detetive foi morto.\n\n\n\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n");
+		system("pause");
+		Sleep(1000);
+		system("cls");
+		system("color 0a");
+		repcheck = 10;
+		do{
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tRecomeçar            -------- 1\n\t\t\t\t\t\t\t\t\tVoltar ao checkpoint -------- 2\n\t\t\t\t\t\t\t\t\tVoltar ao menu       -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+		scanf("%i", &check);
+		
+		switch(check){
+			
+			case 1:
+				recomeco = 10;
+				point++;
+				repcheck++;
+				break;
+				
+				case 2:
+					repcheck++;
+					y--;
+					system("cls");
+					Sleep(2000);
+						printf("\n\n\nAguarde:\t............................................\n\n\n");
+						Sleep(5000);
+						system("cls");
+					break;
+	
+					case 3:
+						recomeco++;
+						point++;
+					repcheck++;		
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							system("pause");
+							Sleep(2000);
+							system("cls");
+							break;
+							
+		}
+	}while(repcheck <= 10);
+							
+							y++;
+								break;
+								case 3:
+									system("cls");
+			if(music == 2){
+	system("start bad.end.mp3");
+	Sleep(500);
+	system("powershell -command (new-object -com shell.application).minimizeall()");
+}
+			system("color 0c");
+			printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n-%s: Preciso me esconder rápido!\n-%s: Ali! vou entrar dentro de uma cabana e me trancar..\n-%s: Espero que ele não me encontre aqui.\n-Membros da Sentinela da Aurora: Uga buga!!\n-%s: Ahhh, eles estão aqui dentro!\n-%s: Ahhh!!", nome, nome, nome, nome, nome);
+			printf("\n\n\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n");
+			printf("\t\t\t\t\t\t\t\t\t\tFinal ruim.\n\t\t\t\t\t\t\t\t\tO detetive foi morto.\n\n\n\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n");
+		system("pause");
+		Sleep(1000);
+		system("cls");
+		system("color 0a");
+		repcheck = 10;
+		do{
+		printf(".................................................................................................................................................................................\n\n\t\t\t\t\t\t\t\t\t\tGame Over\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tRecomeçar            -------- 1\n\t\t\t\t\t\t\t\t\tVoltar ao checkpoint -------- 2\n\t\t\t\t\t\t\t\t\tVoltar ao menu       -------- 3\n\t\t\t\t\t\t\t\t\tDigite aqui: ");
+		scanf("%i", &check);
+		
+		switch(check){
+			
+			case 1:
+				recomeco = 10;
+				point++;
+				repcheck++;
+				break;
+				
+				case 2:
+					y--;
+					repcheck++;	
+					system("cls");
+					Sleep(2000);
+						printf("\n\n\nAguarde:\t............................................\n\n\n");
+						Sleep(5000);
+						system("cls");
+					break;
+	
+					case 3:
+						point++;
+						recomeco++;
+					repcheck++;		
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							system("pause");
+							Sleep(2000);
+							system("cls");
+							break;
+							
+		}
+	}while(repcheck <= 10);
+									
+									y++;
+						break;
+						
+						default:
+							printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+						break; 
+					
+				
+						}
+					}while(y == 10);
+							
+							x++;
+							break;
+							default:
+								printf("\n\nNúmero indisponivel, tente novamente!\n\n");
+							break;
+			}
+			}while(x == 10);	
+	  		 	
+	  		 	if(urso == 1 || urso == 3){
+	  		 		system("cls");
+	  		 }else{
+	  		 	if(caverna == 1){
+	  		 	printf("\n\n-%s: Acho melhor eu voltar para vila!", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Vou alertar todos sobre os desenhos e o ataque.", nome);
+	  		 }else{
+	  		 	printf("\n\n-%s: Acho melhor eu voltar para vila!", nome);
+	  		 	Sleep(2000);
+	  		 	printf("\n-%s: Preciso alertar a vila sobre as cabanas e o ataque.", nome);
+	  		 }
+	  	}
+	  	printf("\n\n\nEm breve, beta atingido... Error on Script.\n\n\n");
+	  	system("pause");
+	  		 	break;
+	  		 	
+	  		 	default:
+	  		 		
+	  		 		printf("Esse número não está referido, por favor tente novamente.");
+	  		 		break;
+	  	
+	  }
+}
+
+//lacuna
+
+}
+}else{
+	printf("-Lorde Eadric: Não compreendi o que disse, poderia repetir");
+}
+}
+	}
+}while(recomeco <= 10);
+	break;
+	
+	default:
+		printf("\t\t\t\t\t\t\t\t\t\t\t");
+		break;
+}
+	system("cls");
+}while(iniciar <= 10);
+}
+system("pause");
+}
